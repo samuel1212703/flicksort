@@ -1,38 +1,45 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap");
+
+/* custom colors in "index.css" */
+
+#main {
+  font-family: "Chivo Mono", monospace;
+}
+
+#title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#search-area {
+  background-color: rgb(50, 50, 50);
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#page-lock {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#center-locked {
+  position: absolute;
+  top: 50vw;
 }
 
-.App-link {
-  color: #61dafb;
+#search-field {
+  font-family: "Chivo Mono", monospace;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#movie-list {
+  background-color: rgb(187, 169, 147);
+}
+
+#help-panel {
+  background-color: rgb(18, 18, 18);
+  height: 100px;
+}
+
+.left-top-locked {
+  position: absolute;
+  left: 80px;
 }
