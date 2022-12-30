@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/flicksort/static/css/main.c561794c.css",
-    "main.js": "/flicksort/static/js/main.71cb4f74.js",
+    "main.js": "/flicksort/static/js/main.47a74d48.js",
     "index.html": "/flicksort/index.html",
     "main.c561794c.css.map": "/flicksort/static/css/main.c561794c.css.map",
-    "main.71cb4f74.js.map": "/flicksort/static/js/main.71cb4f74.js.map"
+    "main.47a74d48.js.map": "/flicksort/static/js/main.47a74d48.js.map"
   },
   "entrypoints": [
     "static/css/main.c561794c.css",
-    "static/js/main.71cb4f74.js"
+    "static/js/main.47a74d48.js"
   ]
 }
