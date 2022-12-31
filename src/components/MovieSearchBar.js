@@ -49,7 +49,7 @@ class MovieSearchBar extends Component {
               >
                 <Container>
                   <Row>
-                    <Col xs={10}>
+                    <Col xs={8}>
                       <h5
                         key={suggestion.title}
                         className="movie-suggestion-content movie-title"
@@ -86,7 +86,7 @@ class MovieSearchBar extends Component {
                         {suggestion.original_language}
                       </h5>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={2}>
                       <h5
                         key={suggestion.vote_average}
                         className="movie-suggestion-content"

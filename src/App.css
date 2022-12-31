@@ -2,12 +2,20 @@
 
 /* custom colors in "index.css" */
 
-#main {
+.App {
+  height: 100vh;
+}
+
+#site {
   font-family: "Chivo Mono", monospace;
+  background-color: black;
+  color: white;
+  width: 100%;
 }
 
 #title {
   text-align: center;
+  font-size: 60px;
 }
 
 #search-area {
@@ -16,14 +24,9 @@
 }
 
 #page-lock {
-  background-color: black;
+  background-color: rgb(94, 68, 43);
   width: 100vw;
   height: 100vh;
-}
-
-#center-locked {
-  position: absolute;
-  top: 50vw;
 }
 
 #search-field {
@@ -31,15 +34,75 @@
 }
 
 #movie-list {
-  background-color: rgb(187, 169, 147);
+  background-color: rgb(70, 63, 55);
 }
 
 #help-panel {
-  background-color: rgb(18, 18, 18);
   height: 100px;
+  background-color: rgba(69, 79, 69, 0.5);
 }
 
-.left-top-locked {
+#left-top-locked1 {
   position: absolute;
-  left: 80px;
+  left: 0;
+  top: 0;
 }
+
+#left-top-locked2 {
+  position: absolute;
+  left: 0;
+  top: 25px;
+}
+
+#container {
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+}
+
+/* google sign in button */
+#center-locked {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  display: grid;
+}
+
+#center-locked:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+
+#center-locked:active {
+  background: #1669f2;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 8px;
+  margin-left: 9px;
+}
+
+.btn-text {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+  grid-column: 2;
+  grid-row: 1;
+  margin: auto;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);

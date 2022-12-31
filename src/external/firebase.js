@@ -25,7 +25,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
-const uid = auth.lastNotifiedUid;
+let uid = auth.lastNotifiedUid;
+if (!uid && auth.currentUser) {
+  uid = auth.currentUser.uid;
+}
 
 function pleaseSignIn() {
   alert("Please sign in");
@@ -65,6 +68,7 @@ async function createMovieList() {
 export async function getMovieList() {
   const movieList = [];
   try {
+    console.log(uid);
     if (uid) {
       const moviesRef = collection(db, "users", uid, "movie-list");
       const sortedMovies = await getDocs(query(moviesRef, orderBy("rank")));
