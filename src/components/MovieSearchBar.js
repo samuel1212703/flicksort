@@ -106,31 +106,6 @@ class MovieSearchBar extends Component {
                     </Col>
                   </Row>
                 </Container>
-                {/* <h3
-                  key={suggestion.title}
-                  className="movie-suggestion-content movie-title"
-                >
-                  {suggestion.title} ({suggestion.release_date.split("-")[0]})
-                </h3>
-                <h4
-                  key={suggestion.vote_average}
-                  className="movie-suggestion-content"
-                >
-                  {suggestion.vote_average}
-                </h4>
-                <button
-                  className="movie-suggestion-content add-button"
-                  onClick={() => {
-                    addToMovieList(suggestion);
-                  }}
-                >
-                  Add
-                </button>
-                <button
-                  className="movie-suggestion-content add-button"
-                >
-                  Help me rate
-                </button> */}
               </div>
             ))
           ) : (

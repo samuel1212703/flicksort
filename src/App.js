@@ -3,19 +3,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HelpPanel from "./components/HelpPanel";
 import DNDlist from "./components/DNDlist";
-import { signIn } from "./external/google_sign_in";
+import { signIn, auth } from "./external/firebase";
 import MovieSearchBar from "./components/MovieSearchBar";
-import { gapi } from "gapi-script";
-// Firebase
-import { getAuth } from "firebase/auth";
 import { Col, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 
 // Variables
 const userinfo = { name: "", token: "", email: "" };
-
-// Firebase
-const auth = getAuth();
 
 async function googleSignIn(setIsLoggedIn) {
   try {
@@ -27,8 +21,7 @@ async function googleSignIn(setIsLoggedIn) {
 }
 
 function googleSignOut() {
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
+  auth.signOut().then(function () {
     console.log("User signed out.");
   });
 }
@@ -37,10 +30,17 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   if (auth.currentUser && userinfo.name === "") {
-    console.log(isLoggedIn);
     userinfo.name = auth.currentUser.displayName;
     userinfo.email = auth.currentUser.email;
   }
+
+  auth.onAuthStateChanged(() => {
+    if (auth.currentUser) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  });
 
   return (
     <div className="App" id="site">

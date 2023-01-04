@@ -1,8 +1,13 @@
 import React, { Component, useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Col, Container, Row, Button } from "react-bootstrap";
-import { updateRank, getMovieList } from "../external/firebase";
+import {
+  updateRank,
+  getMovieList,
+  removeFromMovieList,
+} from "../external/firebase";
 import "./DNDlist.css";
+import { auth } from "../external/firebase";
 
 // Reorder the list items
 const reorder = (list, startIndex, endIndex) => {
@@ -77,7 +82,7 @@ class DNDlist extends Component {
   }
 
   getMovies() {
-    getMovieList().then((res) => {
+    getMovieList(auth.currentUser.uid).then((res) => {
       this.setState({ items: res });
     });
   }
@@ -115,6 +120,15 @@ class DNDlist extends Component {
                               <p className="item-content">
                                 {item.original_title}
                               </p>
+                            </Col>
+                            <Col>
+                              <Button
+                                onClick={() =>
+                                  removeFromMovieList(this.state.items[index])
+                                }
+                              >
+                                Remove
+                              </Button>
                             </Col>
                           </Row>
                         </Container>

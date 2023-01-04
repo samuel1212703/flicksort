@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./HelpPanel.css";
 
 class HelpPanel extends Component {
