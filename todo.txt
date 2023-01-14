@@ -1,0 +1,3 @@
+- help panel
+- list synced check mark
+- lock list (disable drag)

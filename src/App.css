@@ -3,7 +3,7 @@
 /* custom colors in "index.css" */
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #site {
@@ -37,21 +37,13 @@
   background-color: rgb(70, 63, 55);
 }
 
-#help-panel {
-  height: 100px;
-  background-color: rgba(69, 79, 69, 0.5);
-}
-
-#left-top-locked1 {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-#left-top-locked2 {
-  position: absolute;
-  left: 0;
-  top: 25px;
+#user-info {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.35);
+  max-width: 40vw;
 }
 
 #container {

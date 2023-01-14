@@ -5,6 +5,11 @@ import "./HelpPanel.css";
 class HelpPanel extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      movie: props.movie,
+      randomMovie: { title: "fgds" },
+      currentRank: 0,
+    };
   }
 
   render() {
@@ -12,14 +17,20 @@ class HelpPanel extends Component {
       <div id="main">
         <Container>
           <Row>
-            <Col>
-              <Button>Movie1</Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button>Movie2</Button>
-            </Col>
+            {this.state.movie.title ? (
+              <Col>
+                <Button>{this.state.movie.title}</Button>
+              </Col>
+            ) : (
+              <div></div>
+            )}
+            {this.state.randomMovie.title ? (
+              <Col>
+                <Button>{this.state.randomMovie.title}</Button>
+              </Col>
+            ) : (
+              <div></div>
+            )}
           </Row>
         </Container>
       </div>

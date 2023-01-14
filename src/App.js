@@ -1,12 +1,12 @@
 // Local
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HelpPanel from "./components/HelpPanel";
 import DNDlist from "./components/DNDlist";
 import { signIn, auth } from "./external/firebase";
 import MovieSearchBar from "./components/MovieSearchBar";
 import { Col, Container, Row } from "react-bootstrap";
 import { useState } from "react";
+import HelpPanel from "./components/HelpPanel";
 
 // Variables
 const userinfo = { name: "", token: "", email: "" };
@@ -28,6 +28,8 @@ function googleSignOut() {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [viewMode, setViewMode] = useState("");
+  const [helping, setHelping] = useState("");
 
   if (auth.currentUser && userinfo.name === "") {
     userinfo.name = auth.currentUser.displayName;
@@ -46,32 +48,39 @@ function App() {
     <div className="App" id="site">
       {isLoggedIn ? (
         <div>
-          <div>
-            <p id="left-top-locked1">{userinfo.name}</p>
-            <button id="left-top-locked2" onClick={() => googleSignOut()}>
+          <div id="user-info">
+            <p>{userinfo.name}</p>
+            <button id="sign-out" onClick={() => googleSignOut()}>
               Sign out
             </button>
           </div>
           <Container fluid className="p-0" id="container">
             <Row className="row m-0">
-              <Col xs={12} sm={6} className="p-0">
+              <Col xs={12} className="p-0">
                 <h1 id="title">FlickSort</h1>
               </Col>
-              <Col xs={12} sm={6} className="p-0">
+              <Col xs={12} className="p-0">
                 <div id="search-area">
-                  <MovieSearchBar searchResultAmount={3}></MovieSearchBar>
+                  <MovieSearchBar
+                    setHelping={setHelping}
+                    searchResultAmount={3}
+                  ></MovieSearchBar>
                 </div>
               </Col>
-            </Row>
-            <Row className="row m-0">
-              <Col xs={12} sm={6} className="p-0">
-                <div id="help-panel">
-                  <HelpPanel></HelpPanel>
-                </div>
-              </Col>
-              <Col xs={12} sm={6} className="p-0">
+              {helping ? (
+                <Col xs={12} sm={6} className="p-0">
+                  <div id="help-panel">
+                    <HelpPanel movie={{ title: "dgfsgagd" }}></HelpPanel>
+                  </div>
+                </Col>
+              ) : null}
+
+              <Col xs={12} className="p-0">
                 <div id="movie-list">
-                  <DNDlist></DNDlist>
+                  {/* <button onClick={() => setViewMode("lite")}>lite</button>
+                  <button onClick={() => setViewMode("")}>standard</button>
+                  <button onClick={() => setViewMode("full")}>full</button> */}
+                  <DNDlist view_mode={viewMode}></DNDlist>
                 </div>
               </Col>
             </Row>

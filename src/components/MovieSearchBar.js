@@ -3,6 +3,7 @@ import { getSearchSuggestions } from "../external/movieDB";
 import { addToMovieList } from "../external/firebase";
 import "./MovieSearchBar.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { year_from_date } from "../utils/converter";
 
 class MovieSearchBar extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class MovieSearchBar extends Component {
                         className="movie-suggestion-content movie-title"
                       >
                         {suggestion.title} (
-                        {suggestion.release_date.split("-")[0]})
+                        {year_from_date(suggestion.release_date)})
                       </h5>
                     </Col>
                     <Col xs={2}>
@@ -91,19 +92,19 @@ class MovieSearchBar extends Component {
                         key={suggestion.vote_average}
                         className="movie-suggestion-content"
                       >
-                        {suggestion.adult ? <div> * Adult</div> : <div></div>}
+                        {suggestion.adult ? <div> * Adult</div> : null}
                       </h5>
                     </Col>
-                    <Col xs={2}>
+                    {/* <Col xs={2}>
                       <button
                         className="movie-suggestion-content add-button"
                         onClick={() => {
-                          addToMovieList(suggestion);
+                          this.props.setHelping(suggestion);
                         }}
                       >
                         Help
                       </button>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </Container>
               </div>

@@ -1,4 +1,28 @@
-.buttons {
-  margin: 5px;
+.list-item {
+  /* display: grid;
+  margin: 0;
+  gap: 15px; */
+  max-width: 500px;
+  min-height: 150px;
 }
 
+.list-numbers {
+  /* width: 10%;
+  grid-column: 1; 
+  font-size: 50px; */
+}
+
+.left {
+  /* width: 50%;
+  display: inline-block;
+  grid-column: 3; */
+}
+
+.poster-image {
+  width: 100px;
+  float: right;
+  /* width: 30%;
+  display: inline-block;
+  grid-column: 2;
+  max-width: 100px; */
+}
