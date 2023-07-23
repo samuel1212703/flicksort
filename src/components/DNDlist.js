@@ -206,6 +206,7 @@ function gridItem(item, i) {
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const layouts = []
+const colAmount = [8, 6, 4, 3, 1]; // lg, md, sm, xs, xxs
 
 function Example() {
   const [items, setItems] = useState([]);
@@ -214,22 +215,16 @@ function Example() {
     getMovieList().then(res => setItems(res))
   }, [])
 
-  if (!layouts.length) {
-    const lg = []
-    const md = []
-    const sm = []
-    const xs = []
-    const xxs = []
+  if (items.length) {
+    const layoutAmount = colAmount.length;
 
-    items.forEach((item, i) => {
-      const colAmount = [8, 6, 4, 3, 1]; // lg, md, sm, xs, xxs
-      lg.push({ i: String.fromCharCode(97 + i), x: i % colAmount[0], y: Math.floor(i / colAmount[0]), w: 1, h: 1, static: true })
-      md.push({ i: String.fromCharCode(97 + i), x: i % colAmount[1], y: Math.floor(i / colAmount[1]), w: 1, h: 1, static: true })
-      sm.push({ i: String.fromCharCode(97 + i), x: i % colAmount[2], y: Math.floor(i / colAmount[2]), w: 1, h: 1, static: true })
-      xs.push({ i: String.fromCharCode(97 + i), x: i % colAmount[3], y: Math.floor(i / colAmount[3]), w: 1, h: 1, static: true })
-      xxs.push({ i: String.fromCharCode(97 + i), x: i % colAmount[4], y: Math.floor(i / colAmount[4]), w: 1, h: 1, static: true })
-    })
-    layouts.push(lg, md, sm, xs, xxs)
+    for (let i = 0; i < layoutAmount; i++) {
+      const layout = []
+      items.forEach((item, j) => {
+        layout.push({ i: String.fromCharCode(97 + j), x: j % colAmount[i], y: Math.floor(j / colAmount[i]), w: 1, h: 1, static: true })
+      })
+      layouts.push(layout)
+    }
   }
 
   return (
@@ -237,7 +232,7 @@ function Example() {
       className="layout"
       layouts={{ lg: layouts[0], md: layouts[1], sm: layouts[2], xs: layouts[3], xxs: layouts[4] }}
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-      cols={{ lg: 8, md: 6, sm: 4, xs: 3, xxs: 1 }}
+      cols={{ lg: colAmount[0], md: colAmount[1], sm: colAmount[2], xs: colAmount[3], xxs: colAmount[4] }}
       rowHeight={300}
     >
       {items.map((item, index) => {
