@@ -3,7 +3,6 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -93,7 +92,7 @@ export async function removeFromMovieList(movie) {
   const movieListCol = collection(db, "users", user.uid, "movie-list");
   let movieID = "";
   movieList.forEach((movieDoc) => {
-    if (movieDoc.id == movie.id) {
+    if (movieDoc.id === movie.id) {
       movieID = movie.id.toString();
     }
   });
