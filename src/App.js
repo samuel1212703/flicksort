@@ -1,7 +1,7 @@
 // Local
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DNDlist from "./components/DNDlist";
+import MovieGrid from "./components/MovieGrid";
 import { signIn, auth } from "./external/firebase";
 import MovieSearchBar from "./components/MovieSearchBar";
 import { Col, Container, Row } from "react-bootstrap";
@@ -80,7 +80,7 @@ function App() {
                   {/* <button onClick={() => setViewMode("lite")}>lite</button>
                   <button onClick={() => setViewMode("")}>standard</button>
                   <button onClick={() => setViewMode("full")}>full</button> */}
-                  <DNDlist view_mode={viewMode}></DNDlist>
+                  <MovieGrid view_mode={viewMode}></MovieGrid>
                 </div>
               </Col>
             </Row>
