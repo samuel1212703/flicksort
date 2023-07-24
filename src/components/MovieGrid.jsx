@@ -1,51 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button } from "react-bootstrap";
-import {
-  getMovieList,
-  removeFromMovieList,
-} from "../external/firebase";
-import { year_from_date } from "../utils/converter";
+import React, { useState, useEffect } from "react";
+import { getMovieList } from "../external/firebase";
+import { Responsive, WidthProvider } from "react-grid-layout";
+import gridItem from "./MovieGridItem";
+
 import "./MovieGrid.css";
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
-import { Responsive, WidthProvider } from "react-grid-layout";
+
 
 const layoutNames = ['lg', 'md', 'sm', 'xs', 'xxs']
 const ResponsiveGridLayout = WidthProvider(Responsive);
-
-const getItemStyle = (rating) => ({
-  userSelect: "none",
-  padding: "10px",
-  background: "rgb(" + (255 - rating * 25) + ", " + rating * 25 + ", 224)"
-});
-
-function itemContent(item, i) {
-  return (
-    <div>
-      <img
-        alt={item.title}
-        className="poster-image"
-        src={"https://image.tmdb.org/t/p/w500" + item.poster_path}
-      ></img>
-      <h1 className="list-numbers">{i + 1}</h1>
-      <p className="item-content">
-        {item.title}{item.title === item.original_title ? null : "/" + item.original_title} (
-        {year_from_date(item.release_date)})
-      </p>
-    </div>
-  )
-}
-
-function gridItem(item, i) {
-  return (
-    <div key={"movieItem" + i} style={getItemStyle(item.vote_average)}>
-      {itemContent(item, i)}
-      <Button onClick={() => removeFromMovieList(item)}>
-        Remove
-      </Button>
-    </div>
-  )
-}
 
 function getLayouts(items) {
   const gridLayouts = {} //lg: [], md: [], sm: [], xs: [], xxs: []
